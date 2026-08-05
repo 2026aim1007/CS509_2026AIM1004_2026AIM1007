@@ -13,22 +13,25 @@ g++ compiler
 GNU Make
 
 ## Directory Structure
-|--common_wrapper
-|   |--common_wrapper.cpp
-|--assignment_01/
+```text
+CS509_CS1001_AI1002/
+|-- common_wrapper/
+|   `-- common_wrapper.cpp
+|-- assignment_01/
 |   |-- src/
 |   |-- driver/
 |   |-- tests/
-|   |   |--unweighted10.txt
-|   |   |--unweighted100.txt
-|   |   |--unweighted10000.txt
-|   |   `--...
-|   |-- outputs/
-|   |   |--output_bfs_10.txt
-|   |   |--output_bfs_100.txt
-|   |   `--...
-|   |-- Makefile
-|   |-- README.md
+|   |   |-- unweighted10.txt
+|   |   |-- unweighted100.txt
+|   |   |-- unweighted10000.txt
+|   |   `-- ...
+|   `-- outputs/
+|       |-- output_bfs_10.txt
+|       |-- output_bfs_100.txt
+|       `-- ...
+|-- Makefile
+`-- README.md
+```
 
 ## Common Wrapper: Build and Usage
 Wrapper is the main program which is used to choose and run the algorithm of choice on input file from any folder.
@@ -75,12 +78,13 @@ The functions convert (overloading) take in filepath as input and fill the struc
 
 Graph_algorithms header file contains the initialization of all 3 graph algorithms, with each algorithm implemented in seperate file.
 
+
 ### Compilation
 To compile all source files (`driver.cpp`, `csr.cpp`, `bfs.cpp`, `dfs.cpp`, `sssp.cpp`) and generate the executable, run:
 
 ```bash
 make
-
+```
 ### Execution
 ./driver_app
 
@@ -102,6 +106,11 @@ make
 | SSSP | `sssp10000.txt` | 10000 | 10000 | Positive weighted adjacency list converted to CSR | 0 | `expected_sssp_10000.txt` | `output_sssp_10000.txt` | 19 ms | Pass |
 | SSSP | `sssp50000.txt` | 50000 | 50000 | Positive weighted adjacency list converted to CSR | 0 | `expected_sssp_50000.txt` | `output_sssp_50000.txt` | 113 ms | Pass |
 | SSSP | `sssp100000.txt` | 100000 | 100000 | Positive weighted adjacency list converted to CSR | 0 | `expected_sssp_100000.txt` | `output_sssp_100000.txt` | 231 ms | Pass |
+
+### System Specification
+Processor: AMD Ryzen 7 5800H
+RAM: 16 GB
+Storage: 512 GB
 
 ### Complexity
 
