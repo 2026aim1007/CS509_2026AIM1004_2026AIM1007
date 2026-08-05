@@ -107,6 +107,11 @@ make
 | SSSP | `sssp50000.txt` | 50000 | 50000 | Positive weighted adjacency list converted to CSR | 0 | `expected_sssp_50000.txt` | `output_sssp_50000.txt` | 113 ms | Pass |
 | SSSP | `sssp100000.txt` | 100000 | 100000 | Positive weighted adjacency list converted to CSR | 0 | `expected_sssp_100000.txt` | `output_sssp_100000.txt` | 231 ms | Pass |
 
+### System Specification
+Processor: AMD Ryzen 7 5800H
+RAM: 16 GB
+Storage: 512 GB
+
 ### Complexity
 
 **Breadth-First Search (BFS) & Depth-First Search (DFS)**
