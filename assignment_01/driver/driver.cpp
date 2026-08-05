@@ -50,24 +50,29 @@ int main() {
 
         if (choice == 1) {
             algoName = "BFS";
-            testFilePath = "../tests/unweighted" + sizeStr + ".txt";
-            outFilePath = "../outputs/output_bfs_" + sizeStr + ".txt";
-            expectedFilePath = "../outputs/expected_bfs_" + sizeStr + ".txt";
+            testFilePath = "tests/unweighted" + sizeStr + ".txt";
+            outFilePath = "outputs/output_bfs_" + sizeStr + ".txt";
+            expectedFilePath = "outputs/expected_bfs_" + sizeStr + ".txt";
         } else if (choice == 2) {
             algoName = "DFS";
-            testFilePath = "../tests/unweighted" + sizeStr + ".txt";
-            outFilePath = "../outputs/output_dfs_" + sizeStr + ".txt";
-            expectedFilePath = "../outputs/expected_dfs_" + sizeStr + ".txt";
+            testFilePath = "tests/unweighted" + sizeStr + ".txt";
+            outFilePath = "outputs/output_dfs_" + sizeStr + ".txt";
+            expectedFilePath = "outputs/expected_dfs_" + sizeStr + ".txt";
         } else if (choice == 3) {
             algoName = "SSSP";
             isWeighted = true;
-            testFilePath = "../tests/sssp" + sizeStr + ".txt";
-            outFilePath = "../outputs/output_sssp_" + sizeStr + ".txt";
-            expectedFilePath = "../outputs/expected_sssp_" + sizeStr + ".txt";
+            testFilePath = "tests/sssp" + sizeStr + ".txt";
+            outFilePath = "outputs/output_sssp_" + sizeStr + ".txt";
+            expectedFilePath = "outputs/expected_sssp_" + sizeStr + ".txt";
         }
 
         Csr graph;
-        graph.convert(testFilePath, isWeighted);
+        if (isWeighted) {
+            graph.convert(testFilePath, true);
+        } 
+        else {
+            graph.convert(testFilePath);
+        }
         if (graph.csrGraph.numVertices == 0) {
             cout << "  [!] Error: Could not load graph from " << testFilePath << "\n\n";
             continue;
