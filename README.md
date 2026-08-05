@@ -31,6 +31,8 @@ CS509_CS1001_AI1002/
 |       `-- ...
 |-- Makefile
 `-- README.md
+```
+
 ## Common Wrapper: Build and Usage
 Wrapper is the main program which is used to choose and run the algorithm of choice on input file from any folder.
 
@@ -76,13 +78,13 @@ The functions convert (overloading) take in filepath as input and fill the struc
 
 Graph_algorithms header file contains the initialization of all 3 graph algorithms, with each algorithm implemented in seperate file.
 
-```markdown
+
 ### Compilation
 To compile all source files (`driver.cpp`, `csr.cpp`, `bfs.cpp`, `dfs.cpp`, `sssp.cpp`) and generate the executable, run:
 
 ```bash
 make
-
+```
 ### Execution
 ./driver_app
 
