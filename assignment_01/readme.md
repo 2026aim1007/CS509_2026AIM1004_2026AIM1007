@@ -13,6 +13,7 @@ g++ compiler
 GNU Make
 
 ## Directory Structure
+```text
 assignment_01/
 |-- src/
 |-- driver/
@@ -27,6 +28,7 @@ assignment_01/
 |   `--...
 |-- Makefile
 |-- README.md
+```
 
 ## Common Wrapper: Build and Usage
 Wrapper is the main program which is used to choose and run the algorithm of choice on input file from any folder.
@@ -78,7 +80,7 @@ To compile all source files (`driver.cpp`, `csr.cpp`, `bfs.cpp`, `dfs.cpp`, `sss
 
 ```bash
 make
-
+```
 ### Execution
 ./driver_app
 
@@ -100,6 +102,11 @@ make
 | SSSP | `sssp10000.txt` | 10000 | 10000 | Positive weighted adjacency list converted to CSR | 0 | `expected_sssp_10000.txt` | `output_sssp_10000.txt` | 19 ms | Pass |
 | SSSP | `sssp50000.txt` | 50000 | 50000 | Positive weighted adjacency list converted to CSR | 0 | `expected_sssp_50000.txt` | `output_sssp_50000.txt` | 113 ms | Pass |
 | SSSP | `sssp100000.txt` | 100000 | 100000 | Positive weighted adjacency list converted to CSR | 0 | `expected_sssp_100000.txt` | `output_sssp_100000.txt` | 231 ms | Pass |
+
+### System Specification
+Processor: AMD Ryzen 7 5800H
+RAM: 16 GB
+Storage: 512 GB
 
 ### Complexity
 
