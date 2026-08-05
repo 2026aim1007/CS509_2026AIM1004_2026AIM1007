@@ -1,15 +1,16 @@
 #include <iostream>
 #include <vector>
 #include <queue>
-
+#include <limits>
 #include "csr.h"
 
 using namespace std;
+const int INF = numeric_limits<int>::max();
 
-void bfs(Csr graph) {
+void bfs(const Csr& graph, vector<int>& distances, vector<int>& traversal) {
 
     queue<int> forBfs;
-    vector<int> traversal, distances(graph.csrGraph.numVertices, -1);
+    distances.assign(graph.csrGraph.numVertices, INF);
     int distance = 0;
 
     forBfs.push(graph.csrGraph.sourceVertex);
@@ -25,23 +26,11 @@ void bfs(Csr graph) {
         for (int i = graph.csrGraph.rowPtr[vertice]; i < graph.csrGraph.rowPtr[vertice] + neighbors; i++) {
             int neighbor = graph.csrGraph.colIdx[i];
             
-            if (distances[neighbor] == -1) {
+            if (distances[neighbor] == INF) {
                 forBfs.push(neighbor);
                 distances[neighbor] = distances[vertice] + 1;
             }
         }
         
     }while (!(forBfs.empty()));
-
-    cout << "Source: " << graph.csrGraph.sourceVertex << "\n";
-    cout << "Traversal: ";
-    for (int entry : traversal) {
-        cout << entry << " ";
-    }
-    cout << "\n" << "Distances:" << "\n";
-    int idx = 0;
-    for (int entry : distances) {
-        cout << idx << " " << entry << "\n";
-        idx++;
-    }
 }
