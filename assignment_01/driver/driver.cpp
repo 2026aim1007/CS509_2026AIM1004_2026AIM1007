@@ -67,7 +67,12 @@ int main() {
         }
 
         Csr graph;
-        graph.convert(testFilePath, isWeighted);
+        if (isWeighted) {
+            graph.convert(testFilePath, true);
+        } 
+        else {
+            graph.convert(testFilePath);
+        }
         if (graph.csrGraph.numVertices == 0) {
             cout << "  [!] Error: Could not load graph from " << testFilePath << "\n\n";
             continue;
@@ -77,7 +82,7 @@ int main() {
         vector<int> distances;
         auto start = high_resolution_clock::now();
         if (choice == 1) {
-            // bfs(graph, traversal, distances);
+            bfs(graph, distances, traversal);
         } else if (choice == 2) {
             dfs(graph, traversal);
         } else if (choice == 3) {
