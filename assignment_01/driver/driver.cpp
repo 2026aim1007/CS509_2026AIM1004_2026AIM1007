@@ -50,20 +50,20 @@ int main() {
 
         if (choice == 1) {
             algoName = "BFS";
-            testFilePath = "tests/unweighted" + sizeStr + ".txt";
-            outFilePath = "outputs/output_bfs_" + sizeStr + ".txt";
-            expectedFilePath = "outputs/expected_bfs_" + sizeStr + ".txt";
+            testFilePath = "../tests/unweighted" + sizeStr + ".txt";
+            outFilePath = "../outputs/output_bfs_" + sizeStr + ".txt";
+            expectedFilePath = "../outputs/expected_bfs_" + sizeStr + ".txt";
         } else if (choice == 2) {
             algoName = "DFS";
-            testFilePath = "tests/unweighted" + sizeStr + ".txt";
-            outFilePath = "outputs/output_dfs_" + sizeStr + ".txt";
-            expectedFilePath = "outputs/expected_dfs_" + sizeStr + ".txt";
+            testFilePath = "../tests/unweighted" + sizeStr + ".txt";
+            outFilePath = "../outputs/output_dfs_" + sizeStr + ".txt";
+            expectedFilePath = "../outputs/expected_dfs_" + sizeStr + ".txt";
         } else if (choice == 3) {
             algoName = "SSSP";
             isWeighted = true;
-            testFilePath = "tests/sssp" + sizeStr + ".txt";
-            outFilePath = "outputs/output_sssp_" + sizeStr + ".txt";
-            expectedFilePath = "outputs/expected_sssp_" + sizeStr + ".txt";
+            testFilePath = "../tests/sssp" + sizeStr + ".txt";
+            outFilePath = "../outputs/output_sssp_" + sizeStr + ".txt";
+            expectedFilePath = "../outputs/expected_sssp_" + sizeStr + ".txt";
         }
 
         Csr graph;
@@ -77,7 +77,7 @@ int main() {
         vector<int> distances;
         auto start = high_resolution_clock::now();
         if (choice == 1) {
-            // bfs(graph, traversal, distances);
+            bfs(graph, distances, traversal);
         } else if (choice == 2) {
             dfs(graph, traversal);
         } else if (choice == 3) {
