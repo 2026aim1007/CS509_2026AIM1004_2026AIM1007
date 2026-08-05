@@ -1,0 +1,13 @@
+Algorithm: SSSP
+Source: 0
+Vertex	Distance
+0	0
+1	15
+2	11
+3	17
+4	19
+5	4
+6	19
+7	29
+8	19
+9	12

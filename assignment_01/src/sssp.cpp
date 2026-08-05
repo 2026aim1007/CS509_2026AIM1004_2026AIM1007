@@ -7,12 +7,13 @@
 using namespace std;
 const int INF = numeric_limits<int>::max();
 
-void sssp(Csr graph) {
+void sssp(const Csr& graph, vector<int>& distances) {
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> forSssp;
-    vector<int> distances(graph.csrGraph.numVertices, INF);
+    distances.assign(graph.csrGraph.numVertices, INF);
     int source = graph.csrGraph.sourceVertex;
     distances[source] = 0;
     forSssp.push({0, source});
+    
     while (!forSssp.empty()) {
         int currentDist = forSssp.top().first;
         int vertice = forSssp.top().second;
@@ -28,16 +29,6 @@ void sssp(Csr graph) {
                 distances[neighbor] = distances[vertice] + weight;
                 forSssp.push({distances[neighbor], neighbor});
             }
-        }
-    }
-    cout << "Algorithm: SSSP\n";
-    cout << "Source: " << source << "\n";
-    cout << "Vertex\tDistance\n";
-    for (int i = 0; i < graph.csrGraph.numVertices; i++) {
-        if (distances[i] == INF) {
-            cout << i << "\tINF\n";
-        } else {
-            cout << i << "\t" << distances[i] << "\n";
         }
     }
 }
