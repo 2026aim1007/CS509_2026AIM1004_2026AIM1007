@@ -1,6 +1,7 @@
 #include <iostream>
 #include <queue>
 #include "../../utility/csr.h"
+#include "graph_algorithms.h"
 
 using namespace std;
 
@@ -30,5 +31,6 @@ int connectedComp(Csr& csr, vector<int>& componentIds) {
         }
         componentId++;
     }
+
     return componentId;
 }
