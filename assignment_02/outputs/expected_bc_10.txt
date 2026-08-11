@@ -1,0 +1,12 @@
+Algorithm: Betweenness Centrality
+Vertex Centrality
+0 0.00
+1 8.00
+2 14.00
+3 18.00
+4 20.00
+5 20.00
+6 18.00
+7 14.00
+8 8.00
+9 0.00

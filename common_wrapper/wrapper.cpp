@@ -1,106 +1,99 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
-#include <fstream>
 
 using namespace std;
 
-bool fileExists(const string& filename) {
-    ifstream file(filename.c_str());
-    return file.good();
+void clearScreen() {
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
 }
 
-void handleAssignment01() {
-    int choice;
+void pauseScreen() {
+    cout << "\nPress Enter to continue...";
+    cin.ignore();
+    cin.get();
+}
+
+void handleAssignment(int assignmentNum, const string& folderName, const string& menuTitle, const string& options) {
+    int algoChoice;
     do {
-        cout << "\n-------------------------------------------------\n";
-        cout << "              Assignment 01 Menu                 \n";
+        clearScreen();
         cout << "-------------------------------------------------\n";
-        cout << "1. Compile Assignment 01\n";
-        cout << "2. Run BFS (Breadth-First Search)\n";
-        cout << "3. Run DFS (Depth-First Search)\n";
-        cout << "4. Run SSSP (Single-Source Shortest Path)\n";
-        cout << "0. Back to Main Menu\n";
-        cout << "Enter choice (0-4): ";
-        cin >> choice;
+        cout << "              " << menuTitle << "                  \n";
+        cout << "-------------------------------------------------\n";
+        cout << options;
+        cout << "0. Go Back\n";
+        cout << "Enter choice: ";
+        cin >> algoChoice;
 
-        if (choice == 1) {
-            cout << "\n[System] Compiling Assignment 01...\n";
-            if (system("cd ../assignment_01 && mingw32-make") != 0) {
-                cout << "[!] Error: Compilation failed. Please check your Makefile.\n";
-            } else {
-                cout << "[+] Compilation successful!\n";
-            }
-        } 
-        else if (choice >= 2 && choice <= 4) {
-            string exePath = "../assignment_01/driver_app.exe"; 
-            if (!fileExists(exePath)) {
-                cout << "[!] Error: Executable 'driver_app.exe' not found.\n";
-                cout << "    Please compile the assignment (Option 1) before running.\n";
-                continue;
-            }
+        if (algoChoice > 0 && algoChoice <= 3) {
+            int modeChoice;
+            cout << "\nSelect Execution Mode:\n";
+            cout << "0 - Run Once (Standard execution)\n";
+            cout << "1 - Test Mode (Average of 5 runs)\n";
+            cout << "Enter choice (0 or 1): ";
+            cin >> modeChoice;
 
-            int runMode;
-            cout << "\n  1. Run one selected test file\n";
-            cout << "  2. Run ALL test files\n";
-            cout << "  Enter choice (1-2): ";
-            cin >> runMode;
-            string algoArg = to_string(choice - 1); 
-            string command;
-            if (runMode == 1) {
-                string sizeStr;
-                cout << "  Enter test case size (10, 100, 10000, 50000, 100000): ";
-                cin >> sizeStr;
-                string testFile = (choice == 4) ? "sssp" + sizeStr + ".txt" : "unweighted" + sizeStr + ".txt";
-                if (!fileExists("../assignment_01/tests/" + testFile)) {
-                    cout << "[!] Error: Test file 'tests/" << testFile << "' is missing or unavailable.\n";
-                    continue;
-                }
-                command = "cd ../assignment_01 && driver_app.exe " + algoArg + " " + sizeStr;
-            } 
-            else if (runMode == 2) {
-                command = "cd ../assignment_01 && driver_app.exe " + algoArg + " ALL";
-            } 
-            else {
-                cout << "[!] Invalid run mode.\n";
-                continue;
+            string command = "cd ../" + folderName + " && driver_app.exe " + to_string(algoChoice) + " ALL";
+            if (modeChoice == 1) {
+                command += " --test";
             }
-            cout << "\n[System] Executing Driver...\n\n";
+            cout << "\n[System] Executing: " << command << "\n\n";
             system(command.c_str());
+            pauseScreen();
+        } else if (algoChoice != 0) {
+            cout << "\n[!] Invalid choice.\n";
+            pauseScreen();
         }
-    } while (choice != 0);
+    } while (algoChoice != 0);
 }
 
 int main() {
-    int choice;
+    int mainChoice;
     do {
-        cout << "\n=================================================\n";
+        clearScreen();
+        cout << "=================================================\n";
         cout << "           CS509 Common Wrapper Menu             \n";
         cout << "=================================================\n";
-        cout << "1. Assignment 01 (Graph Algorithms: BFS, DFS, SSSP)\n";
-        cout << "9. Compile All Submitted Assignments\n";
+        cout << "1. Assignment 01 (BFS, DFS, SSSP)\n";
+        cout << "2. Assignment 02 (TC, BC, CC)\n";
+        cout << "8. Compile Assignment 01 (Makefile)\n";
+        cout << "9. Compile Assignment 02 (Makefile)\n";
         cout << "0. Exit\n";
         cout << "Enter choice: ";
-        cin >> choice;
-        switch(choice) {
+        cin >> mainChoice;
+
+        switch (mainChoice) {
             case 1:
-                handleAssignment01();
+                handleAssignment(1, "assignment_01", "Assignment 01 Menu", 
+                                 "1. BFS\n2. DFS\n3. SSSP\n");
+                break;
+            case 2:
+                handleAssignment(2, "assignment_02", "Assignment 02 Menu", 
+                                 "1. Triangle Counting (TC)\n2. Betweenness Centrality (BC)\n3. Connected Components (CC)\n");
+                break;
+            case 8:
+                cout << "\n[System] Compiling Assignment 01...\n";
+                system("cd ../assignment_01 && mingw32-make");
+                pauseScreen();
                 break;
             case 9:
-                cout << "\n[System] Compiling All Assignments...\n";
-                cout << "-> Compiling Assignment 01...\n";
-                if (system("cd ../assignment_01 && mingw32-make") != 0) {
-                    cout << "   [!] Assignment 01 Compilation failed.\n";
-                } else {
-                    cout << "   [+] Assignment 01 Compiled successfully.\n";
-                }
+                cout << "\n[System] Compiling Assignment 02...\n";
+                system("cd ../assignment_02 && mingw32-make");
+                pauseScreen();
                 break;
             case 0:
                 cout << "\nExiting wrapper. Goodbye!\n";
                 break;
             default:
                 cout << "\n[!] Invalid choice. Please try again.\n";
+                pauseScreen();
+                break;
         }
-    } while (choice != 0);
+    } while (mainChoice != 0);
     return 0;
 }
