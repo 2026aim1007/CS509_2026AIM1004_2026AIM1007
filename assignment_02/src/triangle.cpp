@@ -1,5 +1,7 @@
+#include <fstream>
 #include <iostream>
 #include "../../utility/csr.h"
+#include "graph_algorithms.h"
 
 using namespace std;
 
@@ -35,5 +37,6 @@ int triangleCountingUnopt(Csr& csr, vector<vector<int>>& triangleSet) {
             }
         }
     }
+
     return rawTriangles / 3;
 }
