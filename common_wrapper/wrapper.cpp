@@ -29,8 +29,8 @@ void handleAssignment(int assignmentNum, const string& folderName, const string&
         cout << "0. Go Back\n";
         cout << "Enter choice: ";
         cin >> algoChoice;
-
-        if (algoChoice > 0 && algoChoice <= 3) {
+        int maxChoice = (assignmentNum == 2) ? 4 : 3;
+        if (algoChoice > 0 && algoChoice <= maxChoice) {
             int modeChoice;
             cout << "\nSelect Execution Mode:\n";
             cout << "0 - Run Once (Standard execution)\n";
@@ -38,7 +38,7 @@ void handleAssignment(int assignmentNum, const string& folderName, const string&
             cout << "Enter choice (0 or 1): ";
             cin >> modeChoice;
 
-            string command = "cd ../" + folderName + " && driver_app.exe " + to_string(algoChoice) + " ALL";
+            string command = "cd ../" + folderName + " && .\\driver_app.exe " + to_string(algoChoice) + " ALL";
             if (modeChoice == 1) {
                 command += " --test";
             }
@@ -60,7 +60,7 @@ int main() {
         cout << "           CS509 Common Wrapper Menu             \n";
         cout << "=================================================\n";
         cout << "1. Assignment 01 (BFS, DFS, SSSP)\n";
-        cout << "2. Assignment 02 (TC, BC, CC)\n";
+        cout << "2. Assignment 02 (TC-Unopt, TC-Opt, BC, CC)\n";
         cout << "8. Compile Assignment 01 (Makefile)\n";
         cout << "9. Compile Assignment 02 (Makefile)\n";
         cout << "0. Exit\n";
@@ -74,7 +74,7 @@ int main() {
                 break;
             case 2:
                 handleAssignment(2, "assignment_02", "Assignment 02 Menu", 
-                                 "1. Triangle Counting (TC)\n2. Betweenness Centrality (BC)\n3. Connected Components (CC)\n");
+                                 "1. Triangle Counting (Unoptimized)\n2. Triangle Counting (Optimized)\n3. Betweenness Centrality (BC)\n4. Connected Components (CC)\n");
                 break;
             case 8:
                 cout << "\n[System] Compiling Assignment 01...\n";
