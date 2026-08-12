@@ -14,11 +14,15 @@ int triangleCountingUnopt(Csr& csr, vector<vector<int>>& triangleSet) {
         int start = graph.rowPtr[vertice], end = graph.rowPtr[vertice + 1];
         for (int i = start; i < end; i++) {
             int neighbor = graph.colIdx[i];
+
+            if (vertice >= neighbor) continue;
             
             int neighborStart = graph.rowPtr[neighbor];
             int neighborEnd = graph.rowPtr[neighbor + 1];
             for (int j = i + 1; j < end; j++) {
                 int neighbor2 = graph.colIdx[j];
+                if (neighbor >= neighbor2) continue;
+
                 bool connected = false;
 
                 for (int linear = neighborStart; linear < neighborEnd; linear++) {
@@ -38,5 +42,5 @@ int triangleCountingUnopt(Csr& csr, vector<vector<int>>& triangleSet) {
         }
     }
 
-    return rawTriangles / 3;
+    return rawTriangles;
 }

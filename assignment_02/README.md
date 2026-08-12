@@ -6,8 +6,8 @@ This repository contains shared implementations for CS509 Lab Work completed in 
 ## Student Details
 * **Student 1 Name:** Arshdeep Singh
 * **Entry Number 1:** 2026AIM1004
-* **Student 2 Name:** Partner Name
-* **Entry Number 2:** 2026AIM1005
+* **Student 2 Name:** Ishtveer Singh Billing
+* **Entry Number 2:** 2026AIM1007
 * **Assignment Type:** Double / Buddy
 
 ## Language and Environment
@@ -61,7 +61,7 @@ The root `wrapper.cpp` serves as the shared repo-level interface to compile driv
 
 ### Compilation
 ```bash
-g++ -O2 common_wrapper/wrapper.cpp -o wrapper
+make run
 ```
 
 ### Execution
@@ -100,35 +100,23 @@ Pre-processes adjacency lists into CSR format (`row_ptr`, `col_idx`) before time
 * `connected_components.h` / `connected_components.cpp`: Component identification routines.
 * `driver.cpp`: Dedicated driver module for input validation, CSR construction, timed execution calls, and result printing.
 
-### Compilation
-```bash
-g++ -O2 assignment_02_graph_analytics/src/csr.cpp assignment_02_graph_analytics/src/triangle_counting.cpp assignment_02_graph_analytics/src/betweenness_centrality.cpp assignment_02_graph_analytics/src/connected_components.cpp assignment_02_graph_analytics/driver/driver.cpp -o assignment_02_graph_analytics/driver/driver
-```
-
-### Execution
-```bash
-./assignment_02_graph_analytics/driver/driver
-```
-
 ### Test Cases and Result Table
 
 | Algorithm | Test File | Vertices ($V$) | Edges ($E$) | Expected Output | Actual Output | Time | Status |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| Triangle Counting | `tc_10.txt` | 10 | | Total Triangles | Total Triangles | | PASSED |
-| Triangle Counting | `tc_100.txt` | 100 | | Total Triangles | Total Triangles | | PASSED |
-| Triangle Counting | `tc_10000.txt` | 10000 | | Total Triangles | Total Triangles | | PASSED |
-| Triangle Counting | `tc_50000.txt` | 50000 | | Total Triangles | Total Triangles | | PASSED |
-| Triangle Counting | `tc_100000.txt` | 100000 | | Total Triangles | Total Triangles | | PASSED |
-| Betweenness Centrality | `bc_10.txt` | 10 | | Centrality per vertex | Centrality per vertex | | PASSED |
-| Betweenness Centrality | `bc_100.txt` | 100 | | Centrality per vertex | Centrality per vertex | | PASSED |
-| Betweenness Centrality | `bc_1000.txt` | 1000 | | Centrality per vertex | Centrality per vertex | | PASSED |
-| Betweenness Centrality | `bc_5000.txt` | 5000 | | Centrality per vertex | Centrality per vertex | | PASSED |
-| Betweenness Centrality | `bc_10000.txt` | 10000 | | Centrality per vertex | Centrality per vertex | | PASSED |
-| Connected Components | `cc_10.txt` | 10 | | Component per vertex | Component per vertex | | PASSED |
-| Connected Components | `cc_100.txt` | 100 | | Component per vertex | Component per vertex | | PASSED |
-| Connected Components | `cc_10000.txt` | 10000 | | Component per vertex | Component per vertex | | PASSED |
-| Connected Components | `cc_50000.txt` | 50000 | | Component per vertex | Component per vertex | | PASSED |
-| Connected Components | `cc_100000.txt` | 100000 | | Component per vertex | Component per vertex | | PASSED |
+| Triangle Counting | `tc_10.txt` | 10 | | Total Triangles | Total Triangles | 0 ms | PASSED |
+| Triangle Counting | `tc_100.txt` | 100 | | Total Triangles | Total Triangles | 0 ms | PASSED |
+| Triangle Counting | `tc_10000.txt` | 10000 | | Total Triangles | Total Triangles | 4.6 ms | PASSED |
+| Triangle Counting | `tc_50000.txt` | 50000 | | Total Triangles | Total Triangles | 30.6 ms | PASSED |
+| Triangle Counting | `tc_100000.txt` | 100000 | | Total Triangles | Total Triangles | 100.557 ms | PASSED |
+| Betweenness Centrality | `bc_10.txt` | 10 | | Centrality per vertex | Centrality per vertex | 0 ms | PASSED |
+| Betweenness Centrality | `bc_100.txt` | 100 | | Centrality per vertex | Centrality per vertex | 0.992 ms | PASSED |
+| Betweenness Centrality | `bc_1000.txt` | 1000 | | Centrality per vertex | Centrality per vertex | 73.399 ms | PASSED |
+| Betweenness Centrality | `bc_5000.txt` | 5000 | | Centrality per vertex | Centrality per vertex | 2117.65 ms | PASSED |
+| Betweenness Centrality | `bc_10000.txt` | 10000 | | Centrality per vertex | Centrality per vertex | 9775.45 ms | PASSED |
+| Connected Components | `cc_10.txt` | 10 | | Component per vertex | Component per vertex | 0 ms | PASSED |
+| Connected Components | `cc_100.txt` | 100 | | Component per vertex | Component per vertex | 1 ms | PASSED |
+| Connected Components | `cc_10000.txt` | 10000 | | Component per vertex | Component per vertex | 13 ms | PASSED |
 
 ### Complexity
 * **Triangle Counting:** Time Complexity: $\mathcal{O}(E \cdot \Delta)$ where $\Delta$ is max degree, Auxiliary Space: $\mathcal{O}(V + E)$

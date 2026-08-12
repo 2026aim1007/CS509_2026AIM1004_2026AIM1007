@@ -5002,5 +5002,5 @@ Vertex Centrality
 4999 0.00
 
 ===METRICS===
-Execution time: 1535.27 ms
+Execution time: 2117.65 ms
 (Averaged over 5 runs)
