@@ -101,3 +101,7 @@ Vertex	Distance
 97	23
 98	21
 99	15
+
+===METRICS===
+Execution time: 0.07036 ms
+(Averaged over 5 runs)
