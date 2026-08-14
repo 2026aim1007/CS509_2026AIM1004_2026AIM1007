@@ -1,0 +1,10 @@
+Algorithm: Gradient Descent
+Degree: 10
+Final x: approximately 0.000000
+Final f(x): approximately 0.000000
+Iterations: 2365
+Converged: true
+
+===METRICS===
+Execution time: 0.494220 ms
+(Averaged over 5 runs)

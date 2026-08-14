@@ -1,0 +1,6 @@
+Algorithm: Gradient Descent
+Degree: 10
+Final x: approximately 0.000000
+Final f(x): approximately 0.000000
+Iterations: 2365
+Converged: true
