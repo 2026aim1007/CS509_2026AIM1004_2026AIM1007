@@ -1,48 +1,56 @@
 #include <iostream>
 #include <string>
-#include <chrono>
 #include <fstream>
 #include <vector>
 #include <limits>
 
 #include "../src/csr.h"
 #include "../src/graph_algorithms.h"
+#include "../../utility/testing_utils.h" 
 
 using namespace std;
-using namespace std::chrono;
 const int INF = numeric_limits<int>::max();
 
-bool compareFiles(const string& p1, const string& p2) {
-    ifstream f1(p1), f2(p2);
-    if (!f1.is_open() || !f2.is_open()) return false;
-    string w1, w2;
-    
-    while (f1 >> w1 && f2 >> w2) {
-        if (w1 != w2) return false;
-    }
-    return (bool)(f1 >> w1) == (bool)(f2 >> w2);
-}
-
-int main() {
-    cout << "=================================================\n";
-    cout << "      CS509 Graph Algorithms Automated Driver    \n";
-    cout << "=================================================\n\n";
-    
-    cout << "Select Algorithm to Run:\n";
-    cout << "1. BFS (Breadth-First Search)\n";
-    cout << "2. DFS (Depth-First Search)\n";
-    cout << "3. SSSP (Single-Source Shortest Path - Dijkstra)\n";
-    cout << "Enter choice (1-3): ";
-    
+int main(int argc, char* argv[]) {
     int choice;
-    cin >> choice;
-    cout << "\n";
-    
+    string runMode = "ALL";
+    bool isBenchmarkMode = false;
+    if (argc >= 3) {
+        choice = stoi(argv[1]);
+        runMode = argv[2];
+        if (argc >= 4 && string(argv[3]) == "--test") {
+            isBenchmarkMode = true;
+        }
+    } else {
+        cout << "=================================================\n";
+        cout << "      CS509 Graph Algorithms Automated Driver    \n";
+        cout << "=================================================\n\n";
+        
+        cout << "Select Algorithm to Run:\n";
+        cout << "1. BFS (Breadth-First Search)\n";
+        cout << "2. DFS (Depth-First Search)\n";
+        cout << "3. SSSP (Single-Source Shortest Path - Dijkstra)\n";
+        cout << "Enter choice (1-3): ";
+        cin >> choice;
+        
+        char modeFlag;
+        cout << "Run in Benchmark mode? (y/n - averages 5 runs): ";
+        cin >> modeFlag;
+        if (modeFlag == 'y' || modeFlag == 'Y') isBenchmarkMode = true;
+        cout << "\n";
+    }
+
     if (choice < 1 || choice > 3) {
         cout << "Invalid choice. Exiting.\n";
         return 1;
     }
-    vector<string> graphSizes = {"10", "100", "10000", "50000", "100000"};
+    int iterations = isBenchmarkMode ? 5 : 1;
+    vector<string> graphSizes;
+    if (runMode == "ALL") {
+        graphSizes = {"10", "100", "10000", "50000", "100000"};
+    } else {
+        graphSizes = {runMode};
+    }
     for (const string& sizeStr : graphSizes) {
         cout << ">>> Running Test Case: " << sizeStr << " Vertices <<<\n";
         string testFilePath, outFilePath, expectedFilePath, algoName;
@@ -69,84 +77,80 @@ int main() {
         Csr graph;
         if (isWeighted) {
             graph.convert(testFilePath, true);
-        } 
-        else {
+        } else {
             graph.convert(testFilePath);
         }
         if (graph.csrGraph.numVertices == 0) {
             cout << "  [!] Error: Could not load graph from " << testFilePath << "\n\n";
             continue;
         }
-
         vector<int> traversal;
         vector<int> distances;
-        auto start = high_resolution_clock::now();
+        double avgTimeMs = 0.0;
         if (choice == 1) {
-            bfs(graph, distances, traversal);
+            auto algoLambda = [&]() {
+                traversal.clear();
+                distances.clear();
+                bfs(graph, distances, traversal);
+            };
+            avgTimeMs = measureAverageExecutionTime(algoLambda, iterations);
         } else if (choice == 2) {
-            dfs(graph, traversal);
+            auto algoLambda = [&]() {
+                traversal.clear();
+                dfs(graph, traversal);
+            };
+            avgTimeMs = measureAverageExecutionTime(algoLambda, iterations);
         } else if (choice == 3) {
-            sssp(graph, distances);
+            auto algoLambda = [&]() {
+                distances.clear();
+                sssp(graph, distances);
+            };
+            avgTimeMs = measureAverageExecutionTime(algoLambda, iterations);
         }
-        auto stop = high_resolution_clock::now();
-        auto duration = duration_cast<milliseconds>(stop - start);
         ofstream outFile(outFilePath);
         if (!outFile.is_open()) {
             cout << "  [!] Error: Could not create output file.\n\n";
             continue;
         }
         int source = graph.csrGraph.sourceVertex;
-        bool printToTerminal = (sizeStr == "10" || sizeStr == "100");
-        if (!printToTerminal) {
-            cout << "(Graph is too large to print to terminal. Writing results directly to " << outFilePath << "...)\n";
-        }
         if (choice == 1) {
             outFile << "Algorithm: BFS\nSource: " << source << "\nTraversal: ";
-            if (printToTerminal) cout << "Algorithm: BFS\nSource: " << source << "\nTraversal: ";
             for (int v : traversal) { 
                 outFile << v << " "; 
-                if (printToTerminal) cout << v << " "; 
             }
             outFile << "\nDistances:\n";
-            if (printToTerminal) cout << "\nDistances:\n";
             for (size_t i = 0; i < distances.size(); i++) {
                 outFile << i << " " << distances[i] << "\n";
-                if (printToTerminal) cout << i << " " << distances[i] << "\n";
             }
         } 
         else if (choice == 2) {
             outFile << "Algorithm: DFS\nSource: " << source << "\nTraversal: ";
-            if (printToTerminal) cout << "Algorithm: DFS\nSource: " << source << "\nTraversal: ";
             for (int v : traversal) { 
                 outFile << v << " "; 
-                if (printToTerminal) cout << v << " "; 
             }
             outFile << "\n"; 
-            if (printToTerminal) cout << "\n";
         } 
         else if (choice == 3) {
             outFile << "Algorithm: SSSP\nSource: " << source << "\nVertex\tDistance\n";
-            if (printToTerminal) cout << "Algorithm: SSSP\nSource: " << source << "\nVertex\tDistance\n";
             for (size_t i = 0; i < distances.size(); i++) {
                 if (distances[i] == INF) {
                     outFile << i << "\tINF\n"; 
-                    if (printToTerminal) cout << i << "\tINF\n";
                 } else {
                     outFile << i << "\t" << distances[i] << "\n"; 
-                    if (printToTerminal) cout << i << "\t" << distances[i] << "\n";
                 }
             }
         }
-        
+        outFile << "\n" << METRICS_ESCAPE_TOKEN << "\n";
+        outFile << "Execution time: " << avgTimeMs << " ms\n";
+        if (isBenchmarkMode) outFile << "(Averaged over " << iterations << " runs)\n";
         outFile.close();
         cout << "--- " << algoName << " TEST SUMMARY (" << sizeStr << " Vertices) ---\n";
-        if (compareFiles(outFilePath, expectedFilePath)) {
+        if (compareFilesWithEscape(outFilePath, expectedFilePath)) {
             cout << "Status: PASSED\n";
         } else {
-            cout << "Status: FAILED\n";
-            cout << "Reason: " << outFilePath << " does not match expected output.\n";
+            cout << "Status: FAILED (Check " << outFilePath << " against expected)\n";
         }
-        cout << "Execution time: " << duration.count() << " ms\n";
+        cout << (isBenchmarkMode ? "Avg Time: " : "Time: ") << avgTimeMs << " ms\n";
         cout << "=================================================\n\n";
     }
     return 0;

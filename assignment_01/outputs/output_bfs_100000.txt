@@ -100002,3 +100002,7 @@ Distances:
 99997 5
 99998 6
 99999 6
+
+===METRICS===
+Execution time: 24.8924 ms
+(Averaged over 5 runs)
