@@ -4,7 +4,9 @@ CXXFLAGS = -Wall -Wextra -std=c++11
 
 TARGET = driver_app
 
-SRCS = driver/driver.cpp src/csr.cpp src/bfs.cpp src/dfs.cpp src/sssp.cpp ../utility/testing_utils.cpp
+# List of source files
+# TODO: Buddy will append src/maxflow.cpp, src/mst.cpp, and src/csr.cpp to this list later
+SRCS = driver/driver.cpp src/gradientDescent.cpp ../utility/testing_utils.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
