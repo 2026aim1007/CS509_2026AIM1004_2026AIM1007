@@ -6,6 +6,7 @@
 
 #include "../src/gradientDescent.h"
 #include "../../utility/testing_utils.h"
+#include "../src/maxflowMincut.h"
 
 using namespace std;
 
@@ -98,7 +99,57 @@ int main(int argc, char* argv[]) {
         }
     }
     else if (choice == 2) {
-        // TODO arsdheep code
+        vector<string> testCases = (runMode == "ALL") ? vector<string>{"10", "100", "1000," "10000", "50000"} : vector<string>{runMode};
+        for (const string& testNum : testCases) {
+            cout << ">>> Running Test Case: gd_" << testNum << " <<<\n";
+            string testFilePath = "tests/maxflow_" + testNum + ".txt";
+            string outFilePath = "outputs/output_maxflow_" + testNum + ".txt";
+
+            Csr csr;
+            csr.convert(testFilePath, true);
+            auto algoLambda = [&]() {
+                maxFlowMinCut(csr);
+            };
+            double avgTimeMs = measureAverageExecutionTime(algoLambda, iterations);
+
+            MFMC mfmc = maxFlowMinCut(csr);
+            ofstream outFile(outFilePath);
+            if (outFile.is_open()) {
+                outFile << "Algorithm: Maxflow-Mincut\n";
+                outFile << "Source: " << csr.csrGraph.sourceVertex << "\n";
+                outFile << "Sink: " << csr.csrGraph.sinkVertex << "\n";
+                outFile << "Maximum flow: " << mfmc.maxFlow << "\n";
+                outFile << "Minimum cut capacity: " << mfmc.minCutCapacity << "\n";
+                outFile << "Source side: ";
+                for (int vertice : mfmc.source) {
+                    outFile << vertice << " ";
+                }
+                outFile << "\n";
+                outFile << "Sink side: ";
+                for (int vertice : mfmc.sink) {
+                    outFile << vertice << " ";
+                }
+                outFile << "\n";
+                outFile << "Cut edges:\n";
+                for (auto edge : mfmc.cutEdges) {
+                    outFile << edge.second.first << " " << edge.second.second << " " << edge.first << "\n";
+                }
+                outFile << "Execution time: " << avgTimeMs << " ms\n";
+                if (isBenchmarkMode) outFile << "(Averaged over " << iterations << " runs)\n";
+                outFile.close();
+            }
+
+            cout << "--- MaxFlow-MinCut TEST SUMMARY (maxflow_" << testNum << ") ---\n";
+            string expectedFilePath = "outputs/expected_maxflow_" + testNum + ".txt";
+            if (compareFilesWithEscape(outFilePath, expectedFilePath)) {
+                cout << "Status: PASSED\n";
+            } else {
+                cout << "Status: FAILED (Check " << outFilePath << " against expected)\n";
+            }
+            cout << "Maximum flow: " << mfmc.maxFlow << " | Minimum cut capacity: " << mfmc.minCutCapacity << " | MaxFlow equals MinCut: " << (mfmc.maxFlow == mfmc.minCutCapacity ? "true" : "false") << "\n";
+            cout << (isBenchmarkMode ? "Avg Time: " : "Time: ") << avgTimeMs << " ms\n";
+            cout << "=================================================\n\n";
+        }
     }
 
     return 0;

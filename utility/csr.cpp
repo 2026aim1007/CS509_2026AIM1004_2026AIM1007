@@ -74,6 +74,9 @@ void Csr::convert(string path, bool isWeighted) {
     string extra;
     if (file >> extra){
         file >> csrGraph.sourceVertex;
+        if (file >> extra) {
+            file >> csrGraph.sinkVertex;
+        }
     }
 
     file.close();
