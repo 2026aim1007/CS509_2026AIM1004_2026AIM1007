@@ -3,6 +3,7 @@
 #include <queue>
 #include "../../utility/csr.h"
 #include "maxflowMincut.h"
+#include "../../utility/testing_utils.h"
 
 using namespace std;
 
@@ -97,4 +98,46 @@ MFMC maxFlowMinCut(Csr& csr) {
     }
 
     return {maxFlow, minCut, sourceSide, sinkSide, cutEdges};
+}
+
+int main() {
+    vector<string> testCases ={"10", "100", "1000", "10000", "50000", "100000"};
+    for (const string& testNum : testCases) {
+        cout << ">>> Running Test Case: gd_" << testNum << " <<<\n";
+        string testFilePath = "../tests/maxflow_" + testNum + ".txt";
+        string outFilePath = "../outputs/expected_maxflow_" + testNum + ".txt";
+
+        Csr csr;
+        csr.convert(testFilePath, true);
+        auto algoLambda = [&]() {
+            maxFlowMinCut(csr);
+        };
+        double avgTimeMs = measureAverageExecutionTime(algoLambda, 5);
+
+        MFMC mfmc = maxFlowMinCut(csr);
+        ofstream outFile(outFilePath);
+        if (outFile.is_open()) {
+            outFile << "Algorithm: Maxflow-Mincut\n";
+            outFile << "Source: " << csr.csrGraph.sourceVertex << "\n";
+            outFile << "Sink: " << csr.csrGraph.sinkVertex << "\n";
+            outFile << "Maximum flow: " << mfmc.maxFlow << "\n";
+            outFile << "Minimum cut capacity: " << mfmc.minCutCapacity << "\n";
+            outFile << "Source side: ";
+            for (int vertice : mfmc.source) {
+                outFile << vertice << " ";
+            }
+            outFile << "\n";
+            outFile << "Sink side: ";
+            for (int vertice : mfmc.sink) {
+                outFile << vertice << " ";
+            }
+            outFile << "\n";
+            outFile << "Cut edges:\n";
+            for (auto edge : mfmc.cutEdges) {
+                outFile << edge.second.first << " " << edge.second.second << " " << edge.first << "\n";
+            }
+            outFile.close();
+        }
+    }
+    return 0;
 }
