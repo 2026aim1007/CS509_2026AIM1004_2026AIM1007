@@ -91,21 +91,21 @@ make
 ### Test Cases and Result Table
 | Algorithm | Test File | Vertices | Edges | Input Type | Source | Expected Output | Actual Output | Time | Status |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| BFS | `unweighted10.txt` | 10 | 10 | Unweighted adjacency list converted to CSR | 0 | `expected_bfs_10.txt` | `output_bfs_10.txt` | 0 ms | Pass |
-| BFS | `unweighted100.txt` | 100 | 100 | Unweighted adjacency list converted to CSR | 0 | `expected_bfs_100.txt` | `output_bfs_100.txt` | 0 ms | Pass |
-| BFS | `unweighted10000.txt` | 10000 | 10000 | Unweighted adjacency list converted to CSR | 0 | `expected_bfs_10000.txt` | `output_bfs_10000.txt` | 1 ms | Pass |
-| BFS | `unweighted50000.txt` | 50000 | 50000 | Unweighted adjacency list converted to CSR | 0 | `expected_bfs_50000.txt` | `output_bfs_50000.txt` | 13 ms | Pass |
-| BFS | `unweighted100000.txt` | 100000 | 100000 | Unweighted adjacency list converted to CSR | 0 | `expected_bfs_100000.txt` | `output_bfs_100000.txt` | 26 ms | Pass |
-| DFS | `unweighted10.txt` | 10 | 10 | Unweighted adjacency list converted to CSR | 0 | `expected_dfs_10.txt` | `output_dfs_10.txt` | 0 ms | Pass |
-| DFS | `unweighted100.txt` | 100 | 100 | Unweighted adjacency list converted to CSR | 0 | `expected_dfs_100.txt` | `output_dfs_100.txt` | 0 ms | Pass |
-| DFS | `unweighted10000.txt` | 10000 | 10000 | Unweighted adjacency list converted to CSR | 0 | `expected_dfs_10000.txt` | `output_dfs_10000.txt` | 3 ms | Pass |
-| DFS | `unweighted50000.txt` | 50000 | 50000 | Unweighted adjacency list converted to CSR | 0 | `expected_dfs_50000.txt` | `output_dfs_50000.txt` | 17 ms | Pass |
-| DFS | `unweighted100000.txt` | 100000 | 100000 | Unweighted adjacency list converted to CSR | 0 | `expected_dfs_100000.txt` | `output_dfs_100000.txt` | 34 ms | Pass |
-| SSSP | `sssp10.txt` | 10 | 10 | Positive weighted adjacency list converted to CSR | 0 | `expected_sssp_10.txt` | `output_sssp_10.txt` | 0 ms | Pass |
-| SSSP | `sssp100.txt` | 100 | 100 | Positive weighted adjacency list converted to CSR | 0 | `expected_sssp_100.txt` | `output_sssp_100.txt` | 0 ms | Pass |
-| SSSP | `sssp10000.txt` | 10000 | 10000 | Positive weighted adjacency list converted to CSR | 0 | `expected_sssp_10000.txt` | `output_sssp_10000.txt` | 19 ms | Pass |
-| SSSP | `sssp50000.txt` | 50000 | 50000 | Positive weighted adjacency list converted to CSR | 0 | `expected_sssp_50000.txt` | `output_sssp_50000.txt` | 113 ms | Pass |
-| SSSP | `sssp100000.txt` | 100000 | 100000 | Positive weighted adjacency list converted to CSR | 0 | `expected_sssp_100000.txt` | `output_sssp_100000.txt` | 231 ms | Pass |
+| BFS | `unweighted10.txt` | 10 | 23 | Unweighted adjacency list converted to CSR | 0 | `expected_bfs_10.txt` | `output_bfs_10.txt` | 0 ms | Pass |
+| BFS | `unweighted100.txt` | 100 | 208 | Unweighted adjacency list converted to CSR | 0 | `expected_bfs_100.txt` | `output_bfs_100.txt` | 0 ms | Pass |
+| BFS | `unweighted10000.txt` | 10000 | 20012 | Unweighted adjacency list converted to CSR | 0 | `expected_bfs_10000.txt` | `output_bfs_10000.txt` | 1 ms | Pass |
+| BFS | `unweighted50000.txt` | 50000 | 99923 | Unweighted adjacency list converted to CSR | 0 | `expected_bfs_50000.txt` | `output_bfs_50000.txt` | 13 ms | Pass |
+| BFS | `unweighted100000.txt` | 100000 | 199709 | Unweighted adjacency list converted to CSR | 0 | `expected_bfs_100000.txt` | `output_bfs_100000.txt` | 26 ms | Pass |
+| DFS | `unweighted10.txt` | 10 | 23 | Unweighted adjacency list converted to CSR | 0 | `expected_dfs_10.txt` | `output_dfs_10.txt` | 0 ms | Pass |
+| DFS | `unweighted100.txt` | 100 | 208 | Unweighted adjacency list converted to CSR | 0 | `expected_dfs_100.txt` | `output_dfs_100.txt` | 0 ms | Pass |
+| DFS | `unweighted10000.txt` | 10000 | 20012 | Unweighted adjacency list converted to CSR | 0 | `expected_dfs_10000.txt` | `output_dfs_10000.txt` | 3 ms | Pass |
+| DFS | `unweighted50000.txt` | 50000 | 99923 | Unweighted adjacency list converted to CSR | 0 | `expected_dfs_50000.txt` | `output_dfs_50000.txt` | 17 ms | Pass |
+| DFS | `unweighted100000.txt` | 100000 | 199709 | Unweighted adjacency list converted to CSR | 0 | `expected_dfs_100000.txt` | `output_dfs_100000.txt` | 34 ms | Pass |
+| SSSP | `sssp10.txt` | 10 | 19 | Positive weighted adjacency list converted to CSR | 0 | `expected_sssp_10.txt` | `output_sssp_10.txt` | 0 ms | Pass |
+| SSSP | `sssp100.txt` | 100 | 202 | Positive weighted adjacency list converted to CSR | 0 | `expected_sssp_100.txt` | `output_sssp_100.txt` | 0 ms | Pass |
+| SSSP | `sssp10000.txt` | 10000 | 20116 | Positive weighted adjacency list converted to CSR | 0 | `expected_sssp_10000.txt` | `output_sssp_10000.txt` | 19 ms | Pass |
+| SSSP | `sssp50000.txt` | 50000 | 99983 | Positive weighted adjacency list converted to CSR | 0 | `expected_sssp_50000.txt` | `output_sssp_50000.txt` | 113 ms | Pass |
+| SSSP | `sssp100000.txt` | 100000 | 200304 | Positive weighted adjacency list converted to CSR | 0 | `expected_sssp_100000.txt` | `output_sssp_100000.txt` | 231 ms | Pass |
 
 ### System Specification
 Processor: AMD Ryzen 7 5800H
@@ -126,9 +126,6 @@ Storage: 512 GB
 
 ## Assignment 02: Graph Analytics (Triangle Counting, Betweenness Centrality, Connected Components)
 
-### Assignment Mode
-Double / Buddy
-
 ### Objective
 Implement structural graph analysis algorithms on unweighted, undirected graphs using Compressed Sparse Row (CSR) format:
 1. Triangle Counting using neighbor list intersections.
@@ -141,37 +138,149 @@ Implement structural graph analysis algorithms on unweighted, undirected graphs 
 3. **Connected Components:** Uses graph traversal (BFS/DFS) or Disjoint Set Union (DSU) to assign unique sequential component IDs to all vertices.
 
 ### Input Format
-Unweighted Undirected Adjacency List text files specifying $V$ and $E$, where each undirected edge is explicitly listed in both endpoint neighbor lists.
+Text files in the following format:
+
+#### For Unweighted Adjacency-List
+V E
+u0 degree neighbor1 neighbor2 ...
+u1 degree neighbor1 neighbor2 ...
+...
+u(V-1) degree neighbor1 neighbor2 ...
+SOURCE s
+V: number of vertices.
+E: number of edges. For an undirected graph, count each graph edge once in E even though it appears in both adjacency lists.
+u: vertex whose adjacency list is being written.
+degree: number of neighbours listed after u.
+s: source vertex for BFS or DFS.
+
+#### For weighted Adjacency-List
+V E
+u0 degree neighbor1 weight1 neighbor2 weight2 ...
+u1 degree neighbor1 weight1 neighbor2 weight2 ...
+...
+u(V-1) degree neighbor1 weight1 neighbor2 weight2 ...
+SOURCE s
 
 ### Helper Functions / CSR Conversion
 Pre-processes adjacency lists into CSR format (`row_ptr`, `col_idx`) before timer invocation. Neighbor lists are pre-sorted for optimized triangle counting intersections.
 
 ### File Structure
 * `csr.h` / `csr.cpp`: Adjacency list to CSR conversion and sorting routines.
-* `triangle_counting.h` / `triangle_counting.cpp`: Intersection-based triangle counting logic.
-* `betweenness_centrality.h` / `betweenness_centrality.cpp`: Brandes' centrality algorithm.
-* `connected_components.h` / `connected_components.cpp`: Component identification routines.
+* `triangle_optimized.cpp`: Intersection-based triangle counting logic.
+* `betweenness_centrality.cpp`: Brandes' centrality algorithm.
+* `components.cpp`: Component identification routines.
 * `driver.cpp`: Dedicated driver module for input validation, CSR construction, timed execution calls, and result printing.
 
 ### Test Cases and Result Table
 
 | Algorithm | Test File | Vertices ($V$) | Edges ($E$) | Expected Output | Actual Output | Time | Status |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| Triangle Counting | `tc_10.txt` | 10 | | Total Triangles | Total Triangles | 0 ms | PASSED |
-| Triangle Counting | `tc_100.txt` | 100 | | Total Triangles | Total Triangles | 0 ms | PASSED |
-| Triangle Counting | `tc_10000.txt` | 10000 | | Total Triangles | Total Triangles | 4.6 ms | PASSED |
-| Triangle Counting | `tc_50000.txt` | 50000 | | Total Triangles | Total Triangles | 30.6 ms | PASSED |
-| Triangle Counting | `tc_100000.txt` | 100000 | | Total Triangles | Total Triangles | 100.557 ms | PASSED |
-| Betweenness Centrality | `bc_10.txt` | 10 | | Centrality per vertex | Centrality per vertex | 0 ms | PASSED |
-| Betweenness Centrality | `bc_100.txt` | 100 | | Centrality per vertex | Centrality per vertex | 0.992 ms | PASSED |
-| Betweenness Centrality | `bc_1000.txt` | 1000 | | Centrality per vertex | Centrality per vertex | 73.399 ms | PASSED |
-| Betweenness Centrality | `bc_5000.txt` | 5000 | | Centrality per vertex | Centrality per vertex | 2117.65 ms | PASSED |
-| Betweenness Centrality | `bc_10000.txt` | 10000 | | Centrality per vertex | Centrality per vertex | 9775.45 ms | PASSED |
-| Connected Components | `cc_10.txt` | 10 | | Component per vertex | Component per vertex | 0 ms | PASSED |
-| Connected Components | `cc_100.txt` | 100 | | Component per vertex | Component per vertex | 1 ms | PASSED |
-| Connected Components | `cc_10000.txt` | 10000 | | Component per vertex | Component per vertex | 13 ms | PASSED |
+| Triangle Counting | `tc_10.txt` | 10 | 19 | Total Triangles | Total Triangles | 0 ms | PASSED |
+| Triangle Counting | `tc_100.txt` | 100 | 292 | Total Triangles | Total Triangles | 0 ms | PASSED |
+| Triangle Counting | `tc_10000.txt` | 10000 | 29985 | Total Triangles | Total Triangles | 4.6 ms | PASSED |
+| Triangle Counting | `tc_50000.txt` | 50000 | 149989 | Total Triangles | Total Triangles | 30.6 ms | PASSED |
+| Triangle Counting | `tc_100000.txt` | 100000 | 299956 | Total Triangles | Total Triangles | 100.557 ms | PASSED |
+| Betweenness Centrality | `bc_10.txt` | 10 | 9 | Centrality per vertex | Centrality per vertex | 0 ms | PASSED |
+| Betweenness Centrality | `bc_100.txt` | 100 | 99 | Centrality per vertex | Centrality per vertex | 0.992 ms | PASSED |
+| Betweenness Centrality | `bc_1000.txt` | 1000 | 999 | Centrality per vertex | Centrality per vertex | 73.399 ms | PASSED |
+| Betweenness Centrality | `bc_5000.txt` | 5000 | 4999 | Centrality per vertex | Centrality per vertex | 2117.65 ms | PASSED |
+| Betweenness Centrality | `bc_10000.txt` | 10000 | 9999 | Centrality per vertex | Centrality per vertex | 9775.45 ms | PASSED |
+| Connected Components | `cc_10.txt` | 10 | 38 | Component per vertex | Component per vertex | 0 ms | PASSED |
+| Connected Components | `cc_100.txt` | 100 | 2500 | Component per vertex | Component per vertex | 1 ms | PASSED |
+| Connected Components | `cc_10000.txt` | 10000 | 19006 | Component per vertex | Component per vertex | 13 ms | PASSED |
+
+### System Specification
+Processor: AMD Ryzen 7 5800H
+RAM: 16 GB
+Storage: 512 GB
 
 ### Complexity
 * **Triangle Counting:** Time Complexity: $\mathcal{O}(E \cdot \Delta)$ where $\Delta$ is max degree, Auxiliary Space: $\mathcal{O}(V + E)$
 * **Betweenness Centrality:** Time Complexity: $\mathcal{O}(V \cdot E)$, Auxiliary Space: $\mathcal{O}(V + E)$
 * **Connected Components:** Time Complexity: $\mathcal{O}(V + E)$, Auxiliary Space: $\mathcal{O}(V)$
+
+## Assignment 03: Gradient Descent and Max-Flow Min-Cut Graph
+
+### Objective
+Implement a structural graph algorithm using Compressed Sparse Row (CSR) format alongside a polynomial numerical optimization algorithm:
+1. **Gradient Descent:** Optimization of generic one-variable polynomial functions $f(x) = \sum_{i=0}^d c_i x^i$.
+2. **Maxflow-Mincut:** Maximum flow computation and residual graph reachability for $s$-$t$ minimum cut on directed capacity CSR graphs (using Dinic's algorithm recommended).
+
+### Algorithm / Approach
+1. **Gradient Descent:** Computes numerical minimums for generic $d$-degree polynomial functions $f(x)$ using analytical derivative $f'(x) = \sum_{i=1}^d i \cdot c_i x^{i-1}$. Iteratively updates $x_{new} = x - \alpha f'(x)$ until $|f'(x)| \le \epsilon$ or the maximum iteration limit is met. 
+Stops when |f'(x)| <= tolerance, or when the maximum number of iterations has been reached.
+
+2. **Maxflow-Mincut:** Computes the maximum $s$-$t$ network flow from source $s$ to sink $t$ without exceeding edge capacities. Extracts the minimum $s$-$t$ cut from the final residual graph by performing graph traversal to find all vertices reachable from $s$. Solved using Dinic's algorithm, in which the high level procedure goes as follows: First building a level graph using bfs, which will help dfs traverse the shortest edges to reach sink. Then dfs is applied on a single fixed level graph, until no more paths can be augmented (essentially in the main residual graph, augmenting means passing flow via a certain path from source to sink). This keeps happening until a level graph cannot be built using bfs. The above steps help calculate max flow. For minimum cut capacity, the final residual graph is used, by performing bfs on it and finding partitions by traversing edges from source where the difference between capacity adn flow is > 0, ultimately finding and comparing that the max flow is equal to the min cut (based on theorem). This algorithm uses current pointer optimization, which skips dead-end edges.
+
+### Input Format
+Text files in the following formats:
+
+#### For Directed Capacity Adjacency-List (Maxflow-Mincut)
+```text
+V E
+u0 degree neighbor1 capacity1 neighbor2 capacity2 ...
+u1 degree neighbor1 capacity1 neighbor2 capacity2 ...
+...
+u(V-1) degree neighbor1 capacity1 neighbor2 capacity2 ...
+SOURCE s
+SINK t
+```
+* **V:** Number of vertices.
+* **E:** Number of directed capacity edges.
+* **s, t:** Source and sink vertex IDs.
+
+#### For Polynomial Optimization (Gradient Descent)
+```text
+DEGREE d
+COEFFICIENTS c0 c1 c2 ... cd
+INITIAL_X x0
+LEARNING_RATE alpha
+TOLERANCE epsilon
+MAX_ITERATIONS n
+```
+* **d:** Polynomial degree.
+* **c0...cd:** $d+1$ floating-point coefficients in ascending power order.
+
+### Helper Functions / CSR Conversion
+Pre-processes adjacency lists into CSR format (`row_ptr`, `col_idx`, `values`) before invoking timers for Maxflow-Mincut routines. Gradient Descent reads parameters directly and bypasses CSR. Execution timing begins **only after** CSR creation is completed.
+
+### File Structure
+* `csr.h` / `csr.cpp`: Adjacency list to CSR conversion routines (reused from Assignment 1/2).
+* `testing_utils.h` / `testing_utils.cpp`: Function to calculate time of various algorithms.
+* `gradientDescent.cpp`: Generic variable-degree polynomial Gradient Descent solver.
+* `maxflowMincut.cpp`: Maxflow and $s$-$t$ min-cut residual reachability solver (e.g., Dinic's Algorithm).
+* `driver.cpp`: Dedicated driver module for input parsing, validation, CSR setup, timing measurements, and output display.
+
+---
+
+### Test Cases and Result Tables
+
+#### 1. Gradient Descent
+| File | Degree | Initial $x_0$ | Rate ($ lpha$) | Tol ($\epsilon$) | Max Iter. | Exp. $x^*$ | Exp. $f(x^*)$ | Actual $x$ | Actual $f(x)$ | Iter. / Time | Status |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| `gd_01.txt` | 2 | 0 | 0.10 | 1e-6 | 5,000 | 3 | 0 | 3.000000 | 0.000000 | 71 / 0.003040 ms | PASSED |
+| `gd_02.txt` | 4 | 2 | 0.02 | 1e-6 | 10,000 | 0 | 0 | 0.000000 | 0.000000 | 181 / 0.022380 ms | PASSED |
+| `gd_03.txt` | 6 | 2 | 0.02 | 1e-6 | 20,000 | 0 | 0 | 0.000000 | 0.000000 | 350 / 0.044680 ms | PASSED |
+| `gd_04.txt` | 8 | 2 | 0.01 | 1e-8 | 50,000 | 0 | 0 | 0.000000 | 0.000000 | 949 / 0.529040 ms | PASSED |
+| `gd_05.txt` | 10 | 2 | 0.005 | 1e-10 | 100,000 | 0 | 0 | 0.000000 | 0.000000 | 2365 / 0.494220 ms | PASSED |
+
+#### 2. Maxflow-Mincut
+| File | Vertices ($V$) | Edges ($E$) | Source ($s$) | Sink ($t$) | Exp. Flow | Actual Flow | Cut Capacity | Time | Status |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| `maxflow_10.txt` | 10 | 40 | 0 | 9 | 117 | 117 | 117 |  ms | PASSED |
+| `maxflow_100.txt` | 100 | 400 | 0 | 99 | 201 | 201 | 201 | 0.45 ms | PASSED |
+| `maxflow_1000.txt` | 1000 | 4000 | 0 | 999 | 94 | 94 | 94 | 4.81 ms | PASSED |
+| `maxflow_10000.txt` | 10000 | 70000 | 0 | 9999 | 17579 | 17579 | 17579 | 62.30 ms | PASSED |
+| `maxflow_50000.txt` | 50000 | 350000 | 0 | 49999 | 7543 | 7543 | 7543 | 412.10 ms | PASSED |
+| `maxflow_100000.txt` | 100000 | 700000 | 0 | 99999 | 21901 | 21901 | 21901 |  ms | PASSED |
+
+---
+
+### System Specification
+Processor: AMD Ryzen 7 5800H
+RAM: 16 GB
+Storage: 512 GB
+
+### Complexity
+* **Gradient Descent:** Time Complexity: $\mathcal{O}(I \cdot d)$ where $I$ is total iterations and $d$ is polynomial degree, Auxiliary Space: $\mathcal{O}(d)$
+* **Maxflow-Mincut (Dinic's Algorithm):** Time Complexity: $\mathcal{O}(V^2 E)$, Auxiliary Space: $\mathcal{O}(V + E)$

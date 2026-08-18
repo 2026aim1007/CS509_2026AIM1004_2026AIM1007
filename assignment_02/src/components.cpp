@@ -6,8 +6,7 @@
 using namespace std;
 
 int connectedComp(Csr& csr, vector<int>& componentIds) {
-    CsrGraph graph = csr.csrGraph;
-    int vertices =  graph.numVertices;
+    int vertices =  csr.csrGraph.numVertices;
     int componentId = 0;
     componentIds.assign(vertices, -1);
 
@@ -21,11 +20,11 @@ int connectedComp(Csr& csr, vector<int>& componentIds) {
             int element = bfs.front();
             bfs.pop();
 
-            int start = graph.rowPtr[element], end = graph.rowPtr[element + 1];
+            int start = csr.csrGraph.rowPtr[element], end = csr.csrGraph.rowPtr[element + 1];
             for (int i = start; i < end; i++) {
-                if (componentIds[graph.colIdx[i]] == -1) {
-                    bfs.push(graph.colIdx[i]);
-                    componentIds[graph.colIdx[i]] = componentId;
+                if (componentIds[csr.csrGraph.colIdx[i]] == -1) {
+                    bfs.push(csr.csrGraph.colIdx[i]);
+                    componentIds[csr.csrGraph.colIdx[i]] = componentId;
                 }
             }
         }

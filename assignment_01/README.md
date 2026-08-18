@@ -1,7 +1,4 @@
-# CS509 Laboratory Repository
-
-## Repository Overview
-Buddy Assignments Repository for CS509 - PG Software Lab M.Tech AI 2026-27.
+# CS509 Shared Buddy Assignments Specific Repo
 
 ## Student / Pair Details
 2026AIM1004 - Arshdeep Singh
@@ -87,21 +84,21 @@ make
 ### Test Cases and Result Table
 | Algorithm | Test File | Vertices | Edges | Input Type | Source | Expected Output | Actual Output | Time | Status |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| BFS | `unweighted10.txt` | 10 | 10 | Unweighted adjacency list converted to CSR | 0 | `expected_bfs_10.txt` | `output_bfs_10.txt` | 0 ms | Pass |
-| BFS | `unweighted100.txt` | 100 | 100 | Unweighted adjacency list converted to CSR | 0 | `expected_bfs_100.txt` | `output_bfs_100.txt` | 0 ms | Pass |
-| BFS | `unweighted10000.txt` | 10000 | 10000 | Unweighted adjacency list converted to CSR | 0 | `expected_bfs_10000.txt` | `output_bfs_10000.txt` | 1 ms | Pass |
-| BFS | `unweighted50000.txt` | 50000 | 50000 | Unweighted adjacency list converted to CSR | 0 | `expected_bfs_50000.txt` | `output_bfs_50000.txt` | 13 ms | Pass |
-| BFS | `unweighted100000.txt` | 100000 | 100000 | Unweighted adjacency list converted to CSR | 0 | `expected_bfs_100000.txt` | `output_bfs_100000.txt` | 26 ms | Pass |
-| DFS | `unweighted10.txt` | 10 | 10 | Unweighted adjacency list converted to CSR | 0 | `expected_dfs_10.txt` | `output_dfs_10.txt` | 0 ms | Pass |
-| DFS | `unweighted100.txt` | 100 | 100 | Unweighted adjacency list converted to CSR | 0 | `expected_dfs_100.txt` | `output_dfs_100.txt` | 0 ms | Pass |
-| DFS | `unweighted10000.txt` | 10000 | 10000 | Unweighted adjacency list converted to CSR | 0 | `expected_dfs_10000.txt` | `output_dfs_10000.txt` | 3 ms | Pass |
-| DFS | `unweighted50000.txt` | 50000 | 50000 | Unweighted adjacency list converted to CSR | 0 | `expected_dfs_50000.txt` | `output_dfs_50000.txt` | 17 ms | Pass |
-| DFS | `unweighted100000.txt` | 100000 | 100000 | Unweighted adjacency list converted to CSR | 0 | `expected_dfs_100000.txt` | `output_dfs_100000.txt` | 34 ms | Pass |
-| SSSP | `sssp10.txt` | 10 | 10 | Positive weighted adjacency list converted to CSR | 0 | `expected_sssp_10.txt` | `output_sssp_10.txt` | 0 ms | Pass |
-| SSSP | `sssp100.txt` | 100 | 100 | Positive weighted adjacency list converted to CSR | 0 | `expected_sssp_100.txt` | `output_sssp_100.txt` | 0 ms | Pass |
-| SSSP | `sssp10000.txt` | 10000 | 10000 | Positive weighted adjacency list converted to CSR | 0 | `expected_sssp_10000.txt` | `output_sssp_10000.txt` | 19 ms | Pass |
-| SSSP | `sssp50000.txt` | 50000 | 50000 | Positive weighted adjacency list converted to CSR | 0 | `expected_sssp_50000.txt` | `output_sssp_50000.txt` | 113 ms | Pass |
-| SSSP | `sssp100000.txt` | 100000 | 100000 | Positive weighted adjacency list converted to CSR | 0 | `expected_sssp_100000.txt` | `output_sssp_100000.txt` | 231 ms | Pass |
+| BFS | `unweighted10.txt` | 10 | 23 | Unweighted adjacency list converted to CSR | 0 | `expected_bfs_10.txt` | `output_bfs_10.txt` | 0 ms | Pass |
+| BFS | `unweighted100.txt` | 100 | 208 | Unweighted adjacency list converted to CSR | 0 | `expected_bfs_100.txt` | `output_bfs_100.txt` | 0 ms | Pass |
+| BFS | `unweighted10000.txt` | 10000 | 20012 | Unweighted adjacency list converted to CSR | 0 | `expected_bfs_10000.txt` | `output_bfs_10000.txt` | 1 ms | Pass |
+| BFS | `unweighted50000.txt` | 50000 | 99923 | Unweighted adjacency list converted to CSR | 0 | `expected_bfs_50000.txt` | `output_bfs_50000.txt` | 13 ms | Pass |
+| BFS | `unweighted100000.txt` | 100000 | 199709 | Unweighted adjacency list converted to CSR | 0 | `expected_bfs_100000.txt` | `output_bfs_100000.txt` | 26 ms | Pass |
+| DFS | `unweighted10.txt` | 10 | 23 | Unweighted adjacency list converted to CSR | 0 | `expected_dfs_10.txt` | `output_dfs_10.txt` | 0 ms | Pass |
+| DFS | `unweighted100.txt` | 100 | 208 | Unweighted adjacency list converted to CSR | 0 | `expected_dfs_100.txt` | `output_dfs_100.txt` | 0 ms | Pass |
+| DFS | `unweighted10000.txt` | 10000 | 20012 | Unweighted adjacency list converted to CSR | 0 | `expected_dfs_10000.txt` | `output_dfs_10000.txt` | 3 ms | Pass |
+| DFS | `unweighted50000.txt` | 50000 | 99923 | Unweighted adjacency list converted to CSR | 0 | `expected_dfs_50000.txt` | `output_dfs_50000.txt` | 17 ms | Pass |
+| DFS | `unweighted100000.txt` | 100000 | 199709 | Unweighted adjacency list converted to CSR | 0 | `expected_dfs_100000.txt` | `output_dfs_100000.txt` | 34 ms | Pass |
+| SSSP | `sssp10.txt` | 10 | 19 | Positive weighted adjacency list converted to CSR | 0 | `expected_sssp_10.txt` | `output_sssp_10.txt` | 0 ms | Pass |
+| SSSP | `sssp100.txt` | 100 | 202 | Positive weighted adjacency list converted to CSR | 0 | `expected_sssp_100.txt` | `output_sssp_100.txt` | 0 ms | Pass |
+| SSSP | `sssp10000.txt` | 10000 | 20116 | Positive weighted adjacency list converted to CSR | 0 | `expected_sssp_10000.txt` | `output_sssp_10000.txt` | 19 ms | Pass |
+| SSSP | `sssp50000.txt` | 50000 | 99983 | Positive weighted adjacency list converted to CSR | 0 | `expected_sssp_50000.txt` | `output_sssp_50000.txt` | 113 ms | Pass |
+| SSSP | `sssp100000.txt` | 100000 | 200304 | Positive weighted adjacency list converted to CSR | 0 | `expected_sssp_100000.txt` | `output_sssp_100000.txt` | 231 ms | Pass |
 
 ### System Specification
 Processor: AMD Ryzen 7 5800H
