@@ -98,8 +98,3 @@ MFMC maxFlowMinCut(Csr& csr) {
 
     return {maxFlow, minCut, sourceSide, sinkSide, cutEdges};
 }
-            outFile.close();
-        }
-    }
-    return 0;
-}
