@@ -12,6 +12,7 @@ struct CsrGraph {
     int numVertices = 0;
     int numEdges = 0;
     int sourceVertex = 0;
+    int sinkVertex = -1;
 
     vector<int> rowPtr;
     vector<int> colIdx;

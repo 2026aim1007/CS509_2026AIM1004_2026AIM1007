@@ -25,11 +25,10 @@ int main(int argc, char* argv[]) {
         cout << "      CS509 Assgn 2 Driver (TC-Unopt, TC-Opt, BC, CC)\n";
         cout << "=================================================\n\n";
         cout << "Select Algorithm:\n";
-        cout << "1. Triangle Counting (Unoptimized)\n";
-        cout << "2. Triangle Counting (Optimized)\n";
-        cout << "3. Betweenness Centrality (BC)\n";
-        cout << "4. Connected Components (CC)\n";
-        cout << "Enter choice (1-4): ";
+        cout << "1. Triangle Counting (Optimized)\n";
+        cout << "2. Betweenness Centrality (BC)\n";
+        cout << "3. Connected Components (CC)\n";
+        cout << "Enter choice (1-3): ";
         cin >> choice;
         char modeFlag;
         cout << "Run in Benchmark mode? (y/n - averages 5 runs): ";
@@ -37,14 +36,14 @@ int main(int argc, char* argv[]) {
         if (modeFlag == 'y' || modeFlag == 'Y') isBenchmarkMode = true;
     }
 
-    if (choice < 1 || choice > 4) {
+    if (choice < 1 || choice > 3) {
         cout << "Invalid choice. Exiting.\n";
         return 1;
     }
     int iterations = isBenchmarkMode ? 5 : 1;
     vector<string> graphSizes;
     if (runMode == "ALL") {
-        if (choice == 3) {
+        if (choice == 2) {
             graphSizes = {"10", "100", "1000", "5000", "10000"}; 
         } else {
             graphSizes = {"10", "100", "10000", "50000", "100000"};
@@ -55,12 +54,12 @@ int main(int argc, char* argv[]) {
 
     for (const string& sizeStr : graphSizes) {
         cout << "\n>>> Running Test Case: " << sizeStr << " Vertices <<<\n";
-        string algoPrefix = (choice == 1 || choice == 2) ? "tc" : (choice == 3) ? "bc" : "cc";
+        string algoPrefix = (choice == 1) ? "tc" : (choice == 2) ? "bc" : "cc";
         string testPath = "tests/" + algoPrefix + "_" + sizeStr + ".txt";
         string outPath = "outputs/output_" + algoPrefix + "_" + sizeStr + ".txt";
         string expPath = "outputs/expected_" + algoPrefix + "_" + sizeStr + ".txt";
         Csr graph;
-        graph.convert(testPath, false);
+        graph.convert(testPath);
         if (graph.csrGraph.numVertices == 0) { 
             cout << "  [!] Error: Could not load " << testPath << "\n";
             continue;
@@ -68,20 +67,6 @@ int main(int argc, char* argv[]) {
         double avgTimeMs = 0.0;
         ofstream outFile(outPath);
         if (choice == 1) {
-            vector<vector<int>> triangles;
-            int total = 0;
-            auto algoLambda = [&]() { 
-                triangles.clear(); 
-                total = triangleCountingUnopt(graph, triangles); 
-            };
-            avgTimeMs = measureAverageExecutionTime(algoLambda, iterations);
-            outFile << "Algorithm: Triangle Counting\nTotal triangles: " << total << "\n";
-            if (sizeStr == "10" || sizeStr == "100") {
-                outFile << "Triangles found:\n";
-                for (const auto& t : triangles) outFile << "(" << t[0] << ", " << t[1] << ", " << t[2] << ")\n";
-            }
-        } 
-        else if (choice == 2) {
             vector<vector<int>> triangles;
             int total = 0;
             auto algoLambda = [&]() { 
@@ -95,7 +80,7 @@ int main(int argc, char* argv[]) {
                 for (const auto& t : triangles) outFile << "(" << t[0] << ", " << t[1] << ", " << t[2] << ")\n";
             }
         }
-        else if (choice == 3) {
+        else if (choice == 2) {
             vector<double> centrality;
             auto algoLambda = [&]() { betweennessCentrality(graph, centrality); };
             avgTimeMs = measureAverageExecutionTime(algoLambda, iterations);
@@ -103,7 +88,7 @@ int main(int argc, char* argv[]) {
             outFile << fixed << setprecision(2);
             for (size_t i = 0; i < centrality.size(); i++) outFile << i << " " << centrality[i] << "\n";
         } 
-        else if (choice == 4) {
+        else if (choice == 3) {
             vector<int> components;
             int numComps = 0;
             auto algoLambda = [&]() { numComps = connectedComp(graph, components); };

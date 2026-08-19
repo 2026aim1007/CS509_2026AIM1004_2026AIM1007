@@ -77,7 +77,7 @@ int main() {
                 break;
             case 2:
                 handleAssignment(2, "assignment_02", "Assignment 02 Menu", 
-                                 "1. Triangle Counting (Unoptimized)\n2. Triangle Counting (Optimized)\n3. Betweenness Centrality (BC)\n4. Connected Components (CC)\n");
+                                 "1. Triangle Counting (Optimized)\n2. Betweenness Centrality (BC)\n3. Connected Components (CC)\n");
                 break;
             case 3:
                 handleAssignment(3, "assignment_03", "Assignment 03 Menu", 

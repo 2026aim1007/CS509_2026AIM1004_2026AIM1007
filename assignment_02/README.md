@@ -1,13 +1,10 @@
-# CS509 Shared Buddy Assignments Repo
-
-## Repository Overview
-This repository contains shared implementations for CS509 Lab Work completed in pairs (Double/Buddy mode).
+# CS509 Shared Buddy Assignments Specific Repo
 
 ## Student Details
 * **Student 1 Name:** Arshdeep Singh
 * **Entry Number 1:** 2026AIM1004
-* **Student 2 Name:** Partner Name
-* **Entry Number 2:** 2026AIM1005
+* **Student 2 Name:** Ishtveer Singh Billing
+* **Entry Number 2:** 2026AIM1007
 * **Assignment Type:** Double / Buddy
 
 ## Language and Environment
@@ -61,7 +58,7 @@ The root `wrapper.cpp` serves as the shared repo-level interface to compile driv
 
 ### Compilation
 ```bash
-g++ -O2 common_wrapper/wrapper.cpp -o wrapper
+make run
 ```
 
 ### Execution
@@ -88,7 +85,28 @@ Implement structural graph analysis algorithms on unweighted, undirected graphs 
 3. **Connected Components:** Uses graph traversal (BFS/DFS) or Disjoint Set Union (DSU) to assign unique sequential component IDs to all vertices.
 
 ### Input Format
-Unweighted Undirected Adjacency List text files specifying $V$ and $E$, where each undirected edge is explicitly listed in both endpoint neighbor lists.
+Text files in the following format:
+
+#### For Unweighted Adjacency-List
+V E
+u0 degree neighbor1 neighbor2 ...
+u1 degree neighbor1 neighbor2 ...
+...
+u(V-1) degree neighbor1 neighbor2 ...
+SOURCE s
+V: number of vertices.
+E: number of edges. For an undirected graph, count each graph edge once in E even though it appears in both adjacency lists.
+u: vertex whose adjacency list is being written.
+degree: number of neighbours listed after u.
+s: source vertex for BFS or DFS.
+
+#### For weighted Adjacency-List
+V E
+u0 degree neighbor1 weight1 neighbor2 weight2 ...
+u1 degree neighbor1 weight1 neighbor2 weight2 ...
+...
+u(V-1) degree neighbor1 weight1 neighbor2 weight2 ...
+SOURCE s
 
 ### Helper Functions / CSR Conversion
 Pre-processes adjacency lists into CSR format (`row_ptr`, `col_idx`) before timer invocation. Neighbor lists are pre-sorted for optimized triangle counting intersections.
@@ -100,35 +118,28 @@ Pre-processes adjacency lists into CSR format (`row_ptr`, `col_idx`) before time
 * `connected_components.h` / `connected_components.cpp`: Component identification routines.
 * `driver.cpp`: Dedicated driver module for input validation, CSR construction, timed execution calls, and result printing.
 
-### Compilation
-```bash
-g++ -O2 assignment_02_graph_analytics/src/csr.cpp assignment_02_graph_analytics/src/triangle_counting.cpp assignment_02_graph_analytics/src/betweenness_centrality.cpp assignment_02_graph_analytics/src/connected_components.cpp assignment_02_graph_analytics/driver/driver.cpp -o assignment_02_graph_analytics/driver/driver
-```
-
-### Execution
-```bash
-./assignment_02_graph_analytics/driver/driver
-```
-
 ### Test Cases and Result Table
 
 | Algorithm | Test File | Vertices ($V$) | Edges ($E$) | Expected Output | Actual Output | Time | Status |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| Triangle Counting | `tc_10.txt` | 10 | | Total Triangles | Total Triangles | | PASSED |
-| Triangle Counting | `tc_100.txt` | 100 | | Total Triangles | Total Triangles | | PASSED |
-| Triangle Counting | `tc_10000.txt` | 10000 | | Total Triangles | Total Triangles | | PASSED |
-| Triangle Counting | `tc_50000.txt` | 50000 | | Total Triangles | Total Triangles | | PASSED |
-| Triangle Counting | `tc_100000.txt` | 100000 | | Total Triangles | Total Triangles | | PASSED |
-| Betweenness Centrality | `bc_10.txt` | 10 | | Centrality per vertex | Centrality per vertex | | PASSED |
-| Betweenness Centrality | `bc_100.txt` | 100 | | Centrality per vertex | Centrality per vertex | | PASSED |
-| Betweenness Centrality | `bc_1000.txt` | 1000 | | Centrality per vertex | Centrality per vertex | | PASSED |
-| Betweenness Centrality | `bc_5000.txt` | 5000 | | Centrality per vertex | Centrality per vertex | | PASSED |
-| Betweenness Centrality | `bc_10000.txt` | 10000 | | Centrality per vertex | Centrality per vertex | | PASSED |
-| Connected Components | `cc_10.txt` | 10 | | Component per vertex | Component per vertex | | PASSED |
-| Connected Components | `cc_100.txt` | 100 | | Component per vertex | Component per vertex | | PASSED |
-| Connected Components | `cc_10000.txt` | 10000 | | Component per vertex | Component per vertex | | PASSED |
-| Connected Components | `cc_50000.txt` | 50000 | | Component per vertex | Component per vertex | | PASSED |
-| Connected Components | `cc_100000.txt` | 100000 | | Component per vertex | Component per vertex | | PASSED |
+| Triangle Counting | `tc_10.txt` | 10 | 19 | Total Triangles | Total Triangles | 0 ms | PASSED |
+| Triangle Counting | `tc_100.txt` | 100 | 292 | Total Triangles | Total Triangles | 0 ms | PASSED |
+| Triangle Counting | `tc_10000.txt` | 10000 | 29985 | Total Triangles | Total Triangles | 4.6 ms | PASSED |
+| Triangle Counting | `tc_50000.txt` | 50000 | 149989 | Total Triangles | Total Triangles | 30.6 ms | PASSED |
+| Triangle Counting | `tc_100000.txt` | 100000 | 299956 | Total Triangles | Total Triangles | 100.557 ms | PASSED |
+| Betweenness Centrality | `bc_10.txt` | 10 | 9 | Centrality per vertex | Centrality per vertex | 0 ms | PASSED |
+| Betweenness Centrality | `bc_100.txt` | 100 | 99 | Centrality per vertex | Centrality per vertex | 0.992 ms | PASSED |
+| Betweenness Centrality | `bc_1000.txt` | 1000 | 999 | Centrality per vertex | Centrality per vertex | 73.399 ms | PASSED |
+| Betweenness Centrality | `bc_5000.txt` | 5000 | 4999 | Centrality per vertex | Centrality per vertex | 2117.65 ms | PASSED |
+| Betweenness Centrality | `bc_10000.txt` | 10000 | 9999 | Centrality per vertex | Centrality per vertex | 9775.45 ms | PASSED |
+| Connected Components | `cc_10.txt` | 10 | 38 | Component per vertex | Component per vertex | 0 ms | PASSED |
+| Connected Components | `cc_100.txt` | 100 | 2500 | Component per vertex | Component per vertex | 1 ms | PASSED |
+| Connected Components | `cc_10000.txt` | 10000 | 19006 | Component per vertex | Component per vertex | 13 ms | PASSED |
+
+### System Specification
+Processor: AMD Ryzen 7 5800H
+RAM: 16 GB
+Storage: 512 GB
 
 ### Complexity
 * **Triangle Counting:** Time Complexity: $\mathcal{O}(E \cdot \Delta)$ where $\Delta$ is max degree, Auxiliary Space: $\mathcal{O}(V + E)$

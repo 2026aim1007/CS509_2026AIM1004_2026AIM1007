@@ -24,6 +24,7 @@ int triangleCountingOpt(Csr& csr, vector<vector<int>>& triangleSet) {
             int v_end = graph.rowPtr[v + 1];
             int p_u = u_start;
             int p_v = v_start;
+
             while (p_u < u_end && p_v < v_end) {
                 int w_u = graph.colIdx[p_u];
                 int w_v = graph.colIdx[p_v];
