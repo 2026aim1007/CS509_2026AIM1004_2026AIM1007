@@ -6,6 +6,7 @@
 
 #include "../src/gradientDescent.h"
 #include "../../utility/testing_utils.h"
+#include "../../utility/csr.h"
 #include "../src/maxflowMincut.h"
 
 using namespace std;
