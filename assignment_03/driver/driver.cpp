@@ -100,9 +100,9 @@ int main(int argc, char* argv[]) {
         }
     }
     else if (choice == 2) {
-        vector<string> testCases = (runMode == "ALL") ? vector<string>{"10", "100", "1000," "10000", "50000"} : vector<string>{runMode};
+        vector<string> testCases = (runMode == "ALL") ? vector<string>{"10", "100", "1000", "10000", "50000", "100000"} : vector<string>{runMode};
         for (const string& testNum : testCases) {
-            cout << ">>> Running Test Case: gd_" << testNum << " <<<\n";
+            cout << ">>> Running Test Case: maxflow_" << testNum << " <<<\n";
             string testFilePath = "tests/maxflow_" + testNum + ".txt";
             string outFilePath = "outputs/output_maxflow_" + testNum + ".txt";
 
@@ -135,6 +135,7 @@ int main(int argc, char* argv[]) {
                 for (auto edge : mfmc.cutEdges) {
                     outFile << edge.second.first << " " << edge.second.second << " " << edge.first << "\n";
                 }
+                outFile << "\n" << METRICS_ESCAPE_TOKEN << "\n";
                 outFile << "Execution time: " << avgTimeMs << " ms\n";
                 if (isBenchmarkMode) outFile << "(Averaged over " << iterations << " runs)\n";
                 outFile.close();

@@ -1,4 +1,5 @@
 #include "gradientDescent.h"
+#include <iostream>
 #include <cmath>
 
 double evaluatePolynomial(const std::vector<double>& coeffs, double x) {

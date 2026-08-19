@@ -6,5 +6,5 @@ Iterations: 350
 Converged: true
 
 ===METRICS===
-Execution time: 0.044680 ms
+Execution time: 0.000000 ms
 (Averaged over 5 runs)

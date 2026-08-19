@@ -11,5 +11,7 @@ Cut edges:
 44 99 31
 94 99 66
 98 99 39
-Execution time: 0.92038 ms
+
+===METRICS===
+Execution time: 0.7988 ms
 (Averaged over 5 runs)
