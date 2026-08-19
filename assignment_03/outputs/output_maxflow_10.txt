@@ -9,5 +9,7 @@ Cut edges:
 3 9 27
 6 9 80
 8 9 10
-Execution time: 0.03996 ms
+
+===METRICS===
+Execution time: 0 ms
 (Averaged over 5 runs)
