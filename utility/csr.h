@@ -25,6 +25,7 @@ public:
 
     void convert(string path);
     void convert(string path, bool isWeighted);
+    void convertFromEdgeList(string path);
 };
 
 #endif // CSR_H
